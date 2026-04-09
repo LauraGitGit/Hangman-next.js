@@ -1,0 +1,263 @@
+body {
+  text-align: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #2c3e50;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px 30px 120px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-family: 'Patrick Hand', 'Comic Sans MS', cursive;
+  color: #34495e;
+  margin: 10px 0;
+}
+
+/* Game title image */
+#titleImage {
+  display: block;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 90%;
+  height: auto;
+  padding-top: 0;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  object-fit: contain;
+}
+
+/* Hangman drawing container */
+#hangmanVisual {
+  text-align: center;
+  margin: 10px 0;
+  padding: 5px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hangmanImage {
+  width: auto;
+  height: 300px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+#hangmanImage:hover {
+  transform: scale(1.02);
+}
+
+/* word input field */
+#secretWordInput {
+  padding: 12px 16px;
+  font-size: 18px;
+  font-family: 'Patrick Hand', cursive;
+  width: 250px;
+  border-radius: 25px;
+  border: 2px solid #3498db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+#secretWordInput:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+}
+
+#startGame,
+#generateWord {
+  padding: 12px 35px;
+  font-size: 18px;
+  font-family: 'Patrick Hand', cursive;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#generateWord {
+  background-color: #27ae60;
+}
+
+#generateWord:hover {
+  background-color: #1c92ec;
+}
+
+#startGame {
+  background-color: #1c92ec;
+}
+
+#startGame:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#wrongGuessesDisplay,
+#livesDisplay {
+  font-size: 22px;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.status {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 18px;
+  color: #34495e;
+  margin: 3px 0;
+}
+
+#wordDisplay {
+  font-size: 28px;
+  letter-spacing: 8px;
+  margin: 12px 0;
+  font-family: 'Patrick Hand', cursive;
+  color: #2c3e50;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#keyboard {
+  margin: 10px auto 35px;
+  max-width: 800px;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}
+
+#keyboard button {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 16px;
+  min-width: 32px;
+  font-family: 'Patrick Hand', cursive;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#keyboard button:hover:not(:disabled) {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#keyboard button:disabled {
+  background-color: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Game control buttons container */
+#controls {
+  margin: 10px 0;
+}
+
+/* Restart and new game buttons */
+#controls button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-family: 'Patrick Hand', cursive;
+  border: none;
+  background-color: #f1c40f;
+  color: #2c3e50;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#controls button:hover {
+  background-color: #f39c12;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px 10px 80px 10px;
+  }
+
+  #titleImage {
+    max-width: 400px;
+    width: 90%;
+  }
+
+  #hangmanImage {
+    height: 220px;
+  }
+
+  #secretWordInput {
+    width: 200px;
+  }
+
+  #keyboard button {
+    padding: 6px 10px;
+    font-size: 14px;
+    min-width: 28px;
+  }
+
+  #wordDisplay {
+    font-size: 24px;
+    letter-spacing: 6px;
+  }
+
+  .status {
+    font-size: 16px;
+  }
+}
+
+#wordInputSection {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#wordInputSection h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 24px;
+}
+
+#game {
+  margin-top: 15px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
